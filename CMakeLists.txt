@@ -4,8 +4,10 @@ project(MY-RP6502-PROJECT C ASM)
 
 add_subdirectory(tools)
 
-add_executable(hello)
-rp6502_executable(hello)
-target_sources(hello PRIVATE
+add_executable(life)
+rp6502_executable(life)
+target_sources(life PRIVATE
+    src/colors.c
+    src/bitmap_graphics.c
     src/main.c
 )

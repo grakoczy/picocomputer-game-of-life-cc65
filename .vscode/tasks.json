@@ -27,5 +27,29 @@
             },
             "problemMatcher": []
         },
+        {
+            "label": "RP6502: upload program",
+            "command": [
+                "python3",
+                "rp6502.py",
+                "-c",
+                "${workspaceFolder}/.rp6502",
+                "upload",
+                "${command:cmake.launchTargetPath}.rp6502"
+            ],
+            "type": "shell",
+            "group": {
+                "kind": "build"
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "focus": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/tools"
+            },
+            "problemMatcher": []
+        },
     ]
 }
