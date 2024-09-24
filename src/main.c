@@ -71,27 +71,20 @@ bool handled_key = false;
 #define key(code) (keystates[code >> 3] & (1 << (code & 7)))
 
 
-static inline void setPixel(int x, int y, bool enabled)
-{
-    uint8_t bit;
-    RIA.addr0 = (x / 8) + (320 / 8 * y);
-    RIA.step0 = 0;
-    bit = 128 >> (x % 8);
-    if (enabled) {
-        RIA.rw0 |= bit;
-    } else {
-        RIA.rw0 &= ~bit;    
-    }
+// static inline void setPixel(int x, int y, bool enabled)
+// {
+//     uint8_t bit;
+//     RIA.addr0 = (x / 8) + (320 / 8 * y);
+//     RIA.step0 = 0;
+//     bit = 128 >> (x % 8);
+//     if (enabled) {
+//         RIA.rw0 |= bit;
+//     } else {
+//         RIA.rw0 &= ~bit;    
+//     }
     
-}
+// }
 
-
-
-void DrawCell(unsigned int x, unsigned int y, bool enabled)
-{		
-    setPixel(x+x_offset, y+y_offset, enabled);
-	
-}
 
 
 void CellMap(unsigned int w, unsigned int h)
@@ -134,7 +127,8 @@ void SetCell(unsigned int x, unsigned int y)
 	*(cell_ptr + yobelow) += 0x02;
 	*(cell_ptr + yobelow + xoright) += 0x02;
 
-    setPixel(x+x_offset, y+y_offset, true);
+    // setPixel(x+x_offset, y+y_offset, true);
+    draw_pixel(WHITE, x+x_offset, y+y_offset);
 }
 
 void ClearCell(unsigned int x, unsigned int y)
@@ -163,7 +157,8 @@ void ClearCell(unsigned int x, unsigned int y)
 	*(cell_ptr + yobelow) -= 0x02;
 	*(cell_ptr + yobelow + xoright) -= 0x02;
 
-    setPixel(x+x_offset, y+y_offset, false);
+    // setPixel(x+x_offset, y+y_offset, false);
+    draw_pixel(BLACK, x+x_offset, y+y_offset);
 }
 
 int CellState(int x, int y)
