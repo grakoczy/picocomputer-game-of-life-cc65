@@ -71,22 +71,6 @@ bool handled_key = false;
 #define key(code) (keystates[code >> 3] & (1 << (code & 7)))
 
 
-// static inline void setPixel(int x, int y, bool enabled)
-// {
-//     uint8_t bit;
-//     RIA.addr0 = (x / 8) + (320 / 8 * y);
-//     RIA.step0 = 0;
-//     bit = 128 >> (x % 8);
-//     if (enabled) {
-//         RIA.rw0 |= bit;
-//     } else {
-//         RIA.rw0 &= ~bit;    
-//     }
-    
-// }
-
-
-
 void CellMap(unsigned int w, unsigned int h)
 {
     width = w;
